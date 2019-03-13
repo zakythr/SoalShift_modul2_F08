@@ -11,7 +11,7 @@
 
 int main()
 {
-    /*pid_t pid, sid;
+    pid_t pid, sid;
 
   pid = fork();
 
@@ -42,7 +42,7 @@ if ((chdir("/")) < 0) {
 
     while(1)
     {
-	sleep(3);*/
+	sleep(3);
 	chdir("/");
         DIR *dp;
         struct dirent *ep;
@@ -72,6 +72,5 @@ if ((chdir("/")) < 0) {
           }
        closedir (dp);
      }
-    /*exit(EXIT_SUCCESS);
-}*/
-
+    exit(EXIT_SUCCESS);
+}
