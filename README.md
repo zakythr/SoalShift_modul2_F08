@@ -1,1 +1,110 @@
 # SoalShift_modul2_F08
+Semoga berkah dan berhasil mengerjakan soal praktikum Sistem Operasi sampai selesai
+
+1. Elen mempunyai pekerjaan pada studio sebagai fotografer. Suatu hari ada seorang klien yang bernama Kusuma yang meminta untuk mengubah nama file yang memiliki ekstensi .png menjadi "[namafile]_grey.png)". Karena jumlah file yang diberikan Kusuma tidak manusiawi, maka Elen meminta bantuan kalian untuk membuat suatu program C yang dapat mengubah nama secara otomatis dan diletakkan pada direktori /home/[user]/modul2/gambar.
+Catatan : Tidak boleh menggunakan crontab.
+
+<h3>Jawaban:</h3>
+
+```
+chdir("/");
+DIR *dp;
+struct dirent *ep;
+//buka folder direktori
+dp = opendir ("/home/zaky/Documents");
+```
+
+- Langkah pertama, kita membuka direktori dimana file berekstensi png berada, kebetulan kami menaruhnya di Documents.
+
+```
+while ((ep = readdir (dp)) != NULL){
+```
+
+- Langkah selanjutnya kita membaca isi direktorinya, jika masih ada isinya (belum NULL) maka program tersebut masih berjalan membaca isi direktorinya.
+
+```
+char *titik = strrchr(dupli, '.');
+if (!titik)
+    continue;
+char *extensi = strdup(titik + 1);
+if (strcmp (extensi, "png") == 0){
+```
+- Fungsi *strrchr* disitu berfungsi untuk mencari titik yang terletak sebelum file ekstensinya.
+- Lalu fungsi *strdup* di program itu berfungsi untuk menduplikat nama ekstensinya, lalu diambil nilainya oleh variabel extensi.
+- Selanjutnya kita bandingkan dengan *strcmp*, membandingkan isi dari extensi dengan "png" jika benar isi dari extensi adalah png maka bernilai "0".
+
+```
+strcat(dupli, "_grey.");
+strcat(tempat, dupli);
+strcat(tempat, extensi);
+```
+- Langkah terakhir kita mau menyelipkan  "_grey." dan ekstensi "png"nya dengan *strcat*.
+
+ 
+ 2. Pada suatu hari Kusuma dicampakkan oleh Elen karena Elen dimenangkan oleh orang lain. Semua kenangan tentang Elen berada pada file bernama “elen.ku” pada direktori “hatiku”. Karena sedih berkepanjangan, tugas kalian sebagai teman Kusuma adalah membantunya untuk menghapus semua kenangan tentang Elen dengan membuat program C yang bisa mendeteksi owner dan group dan menghapus file “elen.ku” setiap 3 detik dengan syarat ketika owner dan grupnya menjadi “www-data”. Ternyata kamu memiliki kendala karena permission pada file “elen.ku”. Jadi, ubahlah permissionnya menjadi 777. Setelah kenangan tentang Elen terhapus, maka Kusuma bisa move on.
+Catatan: Tidak boleh menggunakan crontab
+
+<h3>Jawaban:</h3>
+
+```
+struct stat stb;
+char folderelen[30]="/home/zaky/hatiku/elen.ku";
+stat(folderelen, &stb);
+```
+- Langkah pertama kita mau mengetahui status sistem filenya dari file elen.ku dengan *stat* 
+
+```
+struct passwd *pw = getpwuid(stb.st_uid);
+struct group *gr = getgrgid(stb.st_gid);
+```
+- Proses untuk bisa merubah dan menangkap nama baru owner dan group dari suatu file, dalam kasus ini filenya bernama "elen.ku"
+
+```
+char mydata[10]="www-data";
+int usr=strcmp(pw->pw_name, mydata);
+int grup=strcmp(gr->gr_name, mydata);
+```
+- Proses ini untuk membandingkan nama owner dan group yang kita rubah dengan nama yang diminta dari soal yaitu "www-data"
+
+```
+if(usr==0 && grup==0){
+		remove(folderelen);
+	}
+```
+- Jika sama dengan 0 yang bernilai benar maka file elen.ku akan diremove/dihapus
+- Akan tetapi soal meminta kita untuk men chmod 777 untuk mencegah permission pada file “elen.ku”, caranya dibawah ini ;
+
+```
+chmod ("/home/zaky/hatiku/elen.ku",  S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IWGRP|S_IXGRP|S_IROTH|S_IWOTH|S_IXOTH);
+```
+
+  3. Diberikan file campur2.zip. Di dalam file tersebut terdapat folder “campur2”. 
+Buatlah program C yang dapat :
+i)  mengekstrak file zip tersebut.
+ii) menyimpan daftar file dari folder “campur2” yang memiliki ekstensi .txt ke dalam file daftar.txt. 
+Catatan:  
+Gunakan fork dan exec.
+Gunakan minimal 3 proses yang diakhiri dengan exec.
+Gunakan pipe
+Pastikan file daftar.txt dapat diakses dari text editor
+
+<h3>Jawaban:</h3>
+  
+  4. Dalam direktori /home/[user]/Documents/makanan terdapat file makan_enak.txt yang berisikan daftar makanan terkenal di Surabaya. Elen sedang melakukan diet dan seringkali tergiur untuk membaca isi makan_enak.txt karena ngidam makanan enak. Sebagai teman yang baik, Anda membantu Elen dengan membuat program C yang berjalan setiap 5 detik untuk memeriksa apakah file makan_enak.txt pernah dibuka setidaknya 30 detik yang lalu (rentang 0 - 30 detik).
+Jika file itu pernah dibuka, program Anda akan membuat 1 file makan_sehat#.txt di direktori /home/[user]/Documents/makanan dengan '#' berisi bilangan bulat dari 1 sampai tak hingga untuk mengingatkan Elen agar berdiet.
+- Contoh : File makan_enak.txt terakhir dibuka pada detik ke-1, Pada detik ke-10 terdapat file makan_sehat1.txt dan makan_sehat2.txt
+- Catatan : dilarang menggunakan crontab
+- Contoh nama file : makan_sehat1.txt, makan_sehat2.txt, dst
+
+<h3>Jawaban:</h3>
+  
+  5. Kerjakan poin a dan b di bawah:
+Buatlah program c untuk mencatat log setiap menit dari file log pada syslog ke /home/[user]/log/[dd:MM:yyyy-hh:mm]/log#.log
+Ket:
+Per 30 menit membuat folder /[dd:MM:yyyy-hh:mm]
+Per menit memasukkan log#.log ke dalam folder tersebut
+‘#’ : increment per menit. Mulai dari 1
+Buatlah program c untuk menghentikan program di atas.
+NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan program.
+
+<h3>Jawaban:</h3>
