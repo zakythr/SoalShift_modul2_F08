@@ -14,13 +14,13 @@ struct dirent *ep;
 dp = opendir ("/home/zaky/Documents");
 ```
 
-- Langkah pertama, kita membuka direktori dimana file berekstensi png berada
+- Langkah pertama, kita membuka direktori dimana file berekstensi png berada, kebetulan kami menaruhnya di Documents.
 
 ```
 while ((ep = readdir (dp)) != NULL){
 ```
 
-- Langkah selanjutnya kita membaca isi direktorinya, jika masih ada isinya (belum NULL) maka program tersebut masih berjalan membaca isi direktorinya
+- Langkah selanjutnya kita membaca isi direktorinya, jika masih ada isinya (belum NULL) maka program tersebut masih berjalan membaca isi direktorinya.
 
 ```
 char *titik = strrchr(dupli, '.');
@@ -29,9 +29,9 @@ if (!titik)
 char *extensi = strdup(titik + 1);
 if (strcmp (extensi, "png") == 0){
 ```
-- Fungsi *strrchr* disitu berfungsi untuk mencari titik yang terletak sebelum file ekstensinya
-- Lalu fungsi *strdup* di program itu berfungsi untuk menduplikat nama ekstensinya, lalu diambil nilainya oleh variabel extensi
-- Selanjutnya kita bandingkan dengan *strcmp*, membandingkan isi dari extensi dengan "png" jika benar isi dari extensi adalah png maka bernilai "0"
+- Fungsi *strrchr* disitu berfungsi untuk mencari titik yang terletak sebelum file ekstensinya.
+- Lalu fungsi *strdup* di program itu berfungsi untuk menduplikat nama ekstensinya, lalu diambil nilainya oleh variabel extensi.
+- Selanjutnya kita bandingkan dengan *strcmp*, membandingkan isi dari extensi dengan "png" jika benar isi dari extensi adalah png maka bernilai "0".
 
 ```
 strcat(dupli, "_grey.");
