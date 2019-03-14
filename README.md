@@ -45,7 +45,39 @@ strcat(tempat, extensi);
 Catatan: Tidak boleh menggunakan crontab
 
 <h3>Jawaban:</h3>
-  
+
+```
+struct stat stb;
+char folderelen[30]="/home/zaky/hatiku/elen.ku";
+stat(folderelen, &stb);
+```
+- Langkah pertama kita mau mengetahui status sistem filenya dari file elen.ku dengan *stat* 
+
+```
+struct passwd *pw = getpwuid(stb.st_uid);
+struct group *gr = getgrgid(stb.st_gid);
+```
+- Proses untuk bisa merubah dan menangkap nama baru owner dan group dari suatu file, dalam kasus ini filenya bernama "elen.ku"
+
+```
+char mydata[10]="www-data";
+int usr=strcmp(pw->pw_name, mydata);
+int grup=strcmp(gr->gr_name, mydata);
+```
+- Proses ini untuk membandingkan nama owner dan group yang kita rubah dengan nama yang diminta dari soal yaitu "www-data"
+
+```
+if(usr==0 && grup==0){
+		remove(folderelen);
+	}
+```
+- Jika sama dengan 0 yang bernilai benar maka file elen.ku akan diremove/dihapus
+- Akan tetapi soal meminta kita untuk men chmod 777 untuk mencegah permission pada file “elen.ku”, caranya dibawah ini ;
+
+```
+chmod ("/home/zaky/hatiku/elen.ku",  S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IWGRP|S_IXGRP|S_IROTH|S_IWOTH|S_IXOTH);
+```
+
   3. Diberikan file campur2.zip. Di dalam file tersebut terdapat folder “campur2”. 
 Buatlah program C yang dapat :
 i)  mengekstrak file zip tersebut.
@@ -76,3 +108,4 @@ Buatlah program c untuk menghentikan program di atas.
 NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan program.
 
 <h3>Jawaban:</h3>
+
