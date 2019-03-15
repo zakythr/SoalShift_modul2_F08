@@ -97,6 +97,7 @@ Jika file itu pernah dibuka, program Anda akan membuat 1 file makan_sehat#.txt d
 - Contoh nama file : makan_sehat1.txt, makan_sehat2.txt, dst
 
 <h3>Jawaban:</h3>
+
 - Variable “i” digunakan sebagai penomoran file makan_sehat#.txt
 - Membuat file dengan nama makan_sehat di dalam folder makanan
 - Strcat digunakan hanya untuk mempermudah penamaan file saja
