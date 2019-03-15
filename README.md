@@ -171,4 +171,30 @@ if (diff==1)
 		strcat(alterFolder, fname(0));
 	    }
 ```
-- Kondisi diamana untuk mengganti nama folder yang baru formatnya sesuai dengan pertambahan waktu yang telah diatur
+- Kondisi dimana untuk mengganti nama folder yang baru formatnya sesuai dengan pertambahan waktu yang telah diatur
+
+```
+char flagchar[200];
+memset(&flagchar, 0, sizeof(flagchar));
+sprintf(flagchar, "%d", tanda+1);
+strcat (artlog, flagchar);
+strcat (artlog, ".log");
+```
+- Code di atas merupakan proses untuk format nama filenya yang nilainya bertambah secara urut
+
+```
+FILE *baca = fopen ((char*)pathsyslog, "r");
+FILE *pindah = fopen ((char*)artlog, "w");
+```
+- Code di atas untuk membaca isi filenya dengan "r" lalu diwrite "w" ke file yang lainnya
+- Tapi untuk mengeceknya isi file itu sudah habis atau belum kita menggunakan EOF
+```
+while ((konten = fgetc(baca))!=EOF){
+	fputc(konten,pindah);
+}
+```
+```
+if(tanda%30==0)
+	break;
+```
+- Berfungsi memberhentikan pertambahan file di setiap pertambahan folder di menit 30
