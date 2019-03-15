@@ -97,15 +97,15 @@ Jika file itu pernah dibuka, program Anda akan membuat 1 file makan_sehat#.txt d
 - Contoh nama file : makan_sehat1.txt, makan_sehat2.txt, dst
 
 <h3>Jawaban:</h3>
-    • Variable “i” digunakan sebagai penomoran file makan_sehat#.txt
-    • membuat file dengan nama makan_sehat di dalam folder makanan
-    • strcat digunakan hanya untuk mempermudah penamaan file saja
-    • setiap file makan_sehat berhasil di write, “i” di increment
-    • membuat proses yang berjalan setiap 5 detik
-    • mengambil time dari program yang dijalankan lalu menyimpannya dalam variable timer
-    • stat digunakan untuk return informasi file, dan mengambil informasi berupa waktu akses dari file makan_enak.txt
-    • setelah didapatkan waktu saaat program dijalankan dan waktu terakhir file makan_enak.txt diakses, kemudian dicari selisih dari keduanya dengan menggunakan fungsi difftime
-    • jika difftime <= 30, maka akan dijalankan dalam rentang waktu 0-30 detik setelah file makan_enak diakses, setelah itu dibuatlah file makan_sehat#.txt
+- Variable “i” digunakan sebagai penomoran file makan_sehat#.txt
+- Membuat file dengan nama makan_sehat di dalam folder makanan
+- Strcat digunakan hanya untuk mempermudah penamaan file saja
+- Setiap file makan_sehat berhasil di write, “i” di increment
+- Membuat proses yang berjalan setiap 5 detik
+- Mengambil time dari program yang dijalankan lalu menyimpannya dalam variable timer
+- Stat digunakan untuk return informasi file, dan mengambil informasi berupa waktu akses dari file makan_enak.txt
+- Setelah didapatkan waktu saaat program dijalankan dan waktu terakhir file makan_enak.txt diakses, kemudian dicari selisih dari keduanya dengan menggunakan fungsi difftime
+- jika difftime <= 30, maka akan dijalankan dalam rentang waktu 0-30 detik setelah file makan_enak diakses, setelah itu dibuatlah file makan_sehat#.txt
 
   5. Kerjakan poin a dan b di bawah:
 Buatlah program c untuk mencatat log setiap menit dari file log pada syslog ke /home/[user]/log/[dd:MM:yyyy-hh:mm]/log#.log
