@@ -110,8 +110,6 @@ NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan pr
 <h3>Jawaban:</h3>
 
 ```
-   if (simbol==1)
-  {
     sprintf(nampung, "%d", time.tm_mday);
     strcat(namafd, nampung);
     strcat(namafd, ":");
@@ -126,28 +124,6 @@ NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan pr
     strcat(namafd, ":");
     sprintf(nampung, "%d", time.tm_min);
     strcat(namafd, nampung);
-  }
-  else
-  {
-    time.tm_min+=30;
-    mktime(&time);
-    sprintf(nampung, "%d", time.tm_mday);
-    strcat(namafd, nampung);
-    strcat(namafd, ":");
-    sprintf(nampung,  "%d", time.tm_mon+1);
-    strcat(namafd, nampung);
-    strcat(namafd, ":");
-    sprintf(nampung, "%d", time.tm_year+1900);
-    strcat(namafd, nampung);
-    strcat(namafd, "-");
-    sprintf(nampung, "%d", time.tm_hour);
-    strcat(namafd, nampung);
-    strcat(namafd, ":");
-    sprintf(nampung, "%d", time.tm_min);
-    strcat(namafd, nampung);
-    }
-    return namafd;
-}
 ```
 - Langkah pertama kita membuat format foldernya dengan menggunakan fungsi dengan variabel "fname".
 - Lalu di dalam fungsi tersebut kita akan menggunakan "strcat" untuk menyelipkan/menambahkan format nama filenya dan "sprintf" untuk menampung nilai-nilai waktu yang kita ambil dengan (tm_mday : hari, tm_mon : bulan, tm_year : tahun, tm_hour : jam, dan dan tm_min : menit).
