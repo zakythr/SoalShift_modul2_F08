@@ -108,3 +108,67 @@ Buatlah program c untuk menghentikan program di atas.
 NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan program.
 
 <h3>Jawaban:</h3>
+
+```
+   if (simbol==1)
+  {
+    sprintf(nampung, "%d", time.tm_mday);
+    strcat(namafd, nampung);
+    strcat(namafd, ":");
+    sprintf(nampung, "%d", time.tm_mon+1);
+    strcat(namafd, nampung);
+    strcat(namafd, ":");
+    sprintf(nampung, "%d", time.tm_year+1900);
+    strcat(namafd, nampung);
+    strcat(namafd, "-");
+    sprintf(nampung, "%d", time.tm_hour);
+    strcat(namafd, nampung);
+    strcat(namafd, ":");
+    sprintf(nampung, "%d", time.tm_min);
+    strcat(namafd, nampung);
+  }
+  else
+  {
+    time.tm_min+=30;
+    mktime(&time);
+    sprintf(nampung, "%d", time.tm_mday);
+    strcat(namafd, nampung);
+    strcat(namafd, ":");
+    sprintf(nampung,  "%d", time.tm_mon+1);
+    strcat(namafd, nampung);
+    strcat(namafd, ":");
+    sprintf(nampung, "%d", time.tm_year+1900);
+    strcat(namafd, nampung);
+    strcat(namafd, "-");
+    sprintf(nampung, "%d", time.tm_hour);
+    strcat(namafd, nampung);
+    strcat(namafd, ":");
+    sprintf(nampung, "%d", time.tm_min);
+    strcat(namafd, nampung);
+    }
+    return namafd;
+}
+```
+- Langkah pertama kita membuat format foldernya dengan menggunakan fungsi dengan variabel "fname".
+- Lalu di dalam fungsi tersebut kita akan menggunakan "strcat" untuk menyelipkan/menambahkan format nama filenya dan "sprintf" untuk menampung nilai-nilai waktu yang kita ambil dengan (tm_mday, tm_mon, tm_year, tm_hour, dan dan tm_min).
+
+```
+char folder[200];
+memset(&folder, 0, sizeof(folder));
+strcat(folder, fname(1));
+
+strcat(namapath, folder);
+mkdir(namapath, S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IWGRP|S_IXGRP|S_IROTH|S_IWOTH|S_IXOTH);
+```
+- Proses ini berfungsi untuk membuat folder dengan chmod 777, akan tetapi jika di pemrograman c kita menggunakan (S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IWGRP|S_IXGRP|S_IROTH|S_IWOTH|S_IXOTH) agar bisa di write,read,execute oleh owner, group, dan other
+
+```
+if (diff==1)
+	    {
+		memset(&sebelum, 0, sizeof(sebelum));
+		strcat(sebelum, fname(1));
+		memset(&alterFolder, 0, sizeof(alterFolder));
+		strcat(alterFolder, fname(0));
+	    }
+```
+- Kondisi diamana untuk mengganti nama folder yang baru formatnya sesuai dengan pertambahan waktu yang telah diatur
