@@ -150,7 +150,7 @@ NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan pr
 }
 ```
 - Langkah pertama kita membuat format foldernya dengan menggunakan fungsi dengan variabel "fname".
-- Lalu di dalam fungsi tersebut kita akan menggunakan "strcat" untuk menyelipkan/menambahkan format nama filenya dan "sprintf" untuk menampung nilai-nilai waktu yang kita ambil dengan (tm_mday, tm_mon, tm_year, tm_hour, dan dan tm_min).
+- Lalu di dalam fungsi tersebut kita akan menggunakan "strcat" untuk menyelipkan/menambahkan format nama filenya dan "sprintf" untuk menampung nilai-nilai waktu yang kita ambil dengan (tm_mday : hari, tm_mon : bulan, tm_year : tahun, tm_hour : jam, dan dan tm_min : menit).
 
 ```
 char folder[200];
