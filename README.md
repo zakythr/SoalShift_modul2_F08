@@ -54,15 +54,15 @@ stat(folderelen, &stb);
 - Langkah pertama kita mau mengetahui status sistem filenya dari file elen.ku dengan *stat* 
 
 ```
-struct passwd *pw = getpwuid(stb.st_uid);
-struct group *gr = getgrgid(stb.st_gid);
+struct passwd *pwd = getpwuid(stb.st_uid);
+struct group *grp = getgrgid(stb.st_gid);
 ```
 - Proses untuk bisa merubah dan menangkap nama baru owner dan group dari suatu file, dalam kasus ini filenya bernama "elen.ku"
 
 ```
 char mydata[10]="www-data";
-int usr=strcmp(pw->pw_name, mydata);
-int grup=strcmp(gr->gr_name, mydata);
+int usr=strcmp(pwd->pw_name, mydata);
+int grup=strcmp(grp->gr_name, mydata);
 ```
 - Proses ini untuk membandingkan nama owner dan group yang kita rubah dengan nama yang diminta dari soal yaitu "www-data"
 
