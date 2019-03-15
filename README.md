@@ -108,7 +108,7 @@ Buatlah program c untuk menghentikan program di atas.
 NB: Dilarang menggunakan crontab dan tidak memakai argumen ketika menjalankan program.
 
 <h3>Jawaban:</h3>
-
+<h3>A</h3>
 ```
     sprintf(nampung, "%d", time.tm_mday);
     strcat(namafd, nampung);
@@ -174,3 +174,12 @@ if(tanda%30==0)
 	break;
 ```
 - Berfungsi memberhentikan pertambahan file di setiap pertambahan folder di menit 30
+
+<h3>B</h3>
+
+- Kita disuruh untuk memberhentikan program yang berjalan pada soal A
+- Maka dari itu kita menggunakan exec dan "killalll" file outputnya, caranya sebagai berikut ;
+```
+  char *argv[3] = {"killall", "test_nomer5", NULL};
+  //lalu diexecv
+```
