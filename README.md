@@ -89,6 +89,31 @@ Gunakan pipe
 Pastikan file daftar.txt dapat diakses dari text editor
 
 <h3>Jawaban:</h3>
+
+```
+ if (childid == 0)
+ {
+    char* argv[5] = { "unzip", "/home/zaky/Downloads/campur2.zip", "-d", "/home/zaky/SoalShift_modul2_F08/soal3", NULL};
+    execv("/usr/bin/unzip", argv);
+ }
+```
+- Program di atas berfungsi untuk mengestrak folder zipnya dengan "unzip", lalu hasil unzipnya ditaruh di "/home/zaky/SoalShift_modul2_F08/soal3".
+
+```
+ char* argv[3] = {"ls", "/home/zaky/SoalShift_modul2_F08/soal3/campur2", NULL};
+```
+- Berfungsi untuk mengelist file - file yang berada di direktori campur2.
+
+```
+int fileopen = open("/home/zaky/SoalShift_modul2_F08/soal3/daftar.txt", O_WRONLY);
+```
+- Berfungsi untuk membuka dan menulis isi file daftar.txt dengan "open" dan "O_WRONLY".
+
+```
+char *argv[3] = {"grep",".txt$", NULL};
+execv("/bin/grep", argv);
+```
+- Program di atas berfungsi untuk memilah mana saja file yang berekstensi .txt dengan "grep".
   
   4. Dalam direktori /home/[user]/Documents/makanan terdapat file makan_enak.txt yang berisikan daftar makanan terkenal di Surabaya. Elen sedang melakukan diet dan seringkali tergiur untuk membaca isi makan_enak.txt karena ngidam makanan enak. Sebagai teman yang baik, Anda membantu Elen dengan membuat program C yang berjalan setiap 5 detik untuk memeriksa apakah file makan_enak.txt pernah dibuka setidaknya 30 detik yang lalu (rentang 0 - 30 detik).
 Jika file itu pernah dibuka, program Anda akan membuat 1 file makan_sehat#.txt di direktori /home/[user]/Documents/makanan dengan '#' berisi bilangan bulat dari 1 sampai tak hingga untuk mengingatkan Elen agar berdiet.
